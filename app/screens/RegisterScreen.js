@@ -1,17 +1,12 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  KeyboardAvoidingView,
-} from 'react-native';
+import {StyleSheet, Text, View, Image, StatusBar} from 'react-native';
 import React, {useState} from 'react';
 import AppTextInput from '../components/AppTextInput';
 import AppButton from '../components/AppButton';
-import {useNavigation} from '@react-navigation/native';
+import {COLORS, FONTS} from '../../../../rnProjects/NFT_Seller/app/constants';
 import AppStatusBar from '../components/AppStatusBar';
+import {useNavigation} from '@react-navigation/native';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
@@ -20,9 +15,9 @@ const LoginScreen = () => {
       <AppStatusBar />
       <View style={styles.topContainer}>
         <Image style={styles.logo} source={require('../assets/react.png')} />
-        <Text style={styles.text}>Login</Text>
+        <Text style={styles.text}>Register</Text>
       </View>
-      <KeyboardAvoidingView style={{width: '90%', marginVertical: 15}}>
+      <View style={{width: '90%', marginVertical: 15}}>
         <AppTextInput
           placeholder="Email"
           onChangeText={email => setEmail(email)}
@@ -30,29 +25,27 @@ const LoginScreen = () => {
         <AppTextInput
           placeholder="Password"
           onChangeText={password => setPassword(password)}
-          secureTextEntry
         />
-      </KeyboardAvoidingView>
-      <KeyboardAvoidingView style={styles.btnContainer}>
-        <AppButton title="Login" />
+      </View>
+      <View style={styles.btnContainer}>
+        <AppButton title="Register" />
         <AppButton
-          title="Register"
-          onPress={() => navigation.navigate('Register')}
+          title="Log In"
+          onPress={() => navigation.navigate('Login')}
         />
-      </KeyboardAvoidingView>
+      </View>
     </View>
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 50,
-    backgroundColor: 'white',
+    marginBottom: 50,
   },
   btnContainer: {
     width: '90%',
